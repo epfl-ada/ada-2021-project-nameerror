@@ -20,7 +20,14 @@ of the quotes they are assumed to have said weighted by the probability that the
 speakers and report the results in form of a table or perform PCA from the embedding space to 2D on the selected speakers, followed by clustering and visualize the results for better reader experience.
 
 
+# Feedback
 
-#### Remarks by a TA
+Feedback: Needs minor improvements
+Overall, the ideas are interesting and well described. Here are some comments and observations, hope you find them useful :)
 
-- Lack of questions aimed to be answered with these ideas
+- Idea 1: Do you want to focus on a single country or topic or on the world’s history? You could maybe create an automatic pipeline that allows you to create the timelines per topic.
+
+- Idea 2: Which is your research question? What specifically do you want to study?
+
+- Idea 3: It is great that you have an idea of how to answer the question but again the questions are not clear to me (maybe what are the different groups of speakers?). I would recommend to have the question in mind first, and then research what methods have been previously used for this purpose or which methods have not been used but could be promising.
+Best,
