@@ -30,6 +30,7 @@ As for our GitHub repository we have the following organization:
 * filter_dataset.ipynb - This notebook selects the quotations related to vegetarianism/veganism from the Quotebank dataset
 * enrich_dataset.ipynb - This notebook contains the code to build the dataset from the Quotebank dataset and the Wikidata knowledge base. There is also the code to merge the datasets from different years
 * analysis.ipynb - This notebook contains some analyses on the final dataset of the year 2020
+
 The order is the same as our pipeline, that is keyword selection, quotation selection, data augmentation and merging and analysis. This was done mainly for the year 2020 as a proof of feasibility. The extension to other years follows a similar pattern.
 
 ## Organization and timeline
@@ -45,3 +46,4 @@ The timeline will be organized around the following milestones:
 * Milestone 4 (17.12.2021) - Working on the final details, making everything beautiful and readable.
 
 ## Questions for TAs
+* We thought about creating some baseline statistics from randomly sampling the Quotebank dataset to make our conclusion more robust. Is this a viable solution?
