@@ -1,10 +1,10 @@
 ﻿# Understanding Vegetarianism Through the Media
----
-# Abstract
+
+## Abstract
 We have been hearing more and more about the problems related to meat (health, environment, ethics) for some time. It is in this context that several movements (vegetarianism, veganism) have started to become popular. In this project we want to understand the evolution of vegetarianism and veganism by looking at news quotes from the last decade. We aim to extract the general opinion of the media about vegetarianism and see the evolution in time. Furthermore the motivations and characteristics of the speakers who talk about these movements will be analyzed. We will focus on these two movements because they are the most important and popular. In the following when we talk about vegetarianism we also include veganism since it is a subset of vegetarianism.
 
 
-# Research questions
+## Research questions
 In this project we will address the following questions.
 
 
