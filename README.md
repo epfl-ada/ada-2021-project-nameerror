@@ -19,19 +19,21 @@ By selecting quotes that contain terms related to areas such as ethics, environm
 
 ## Methods and datasets
 To answer our questions we will use the Quotebank dataset for citation-speaker pairs. It will then be necessary to enrich this dataset with metadata about the speakers that we will obtain from the Wikidata knowledge base. 
-The most difficult part in this project is to group the selected quotations according to the sentiment. A quotation which is against a topic is more likely to contain negative overall feeling/sentiment whereas a quotation talking about the benefits of a topic is expected to have a more positive feeling. This task requires a sentiment analysis of the quotations. We will use VADER (Valence Aware Dictionary and sEntiment Reasoner) which is an open-source sentiment analyzer pre-build library to achieve this. The results will be used as an additional feature in our dataset. 
+The most difficult part in this project is to group the selected quotations according to the sentiment. A quotation which is against a topic is more likely to contain negative overall feeling/sentiment whereas a quotation talking about the benefits of a topic is expected to have a more positive feeling. This task requires a sentiment analysis of the quotations. We will use [VADER](https://www.nltk.org/_modules/nltk/sentiment/vader.html) (Valence Aware Dictionary and sEntiment Reasoner) which is an open-source sentiment analyzer pre-build library to achieve this. The results will be used as an additional feature in our dataset. 
 
 This will be done for each year since 2008 to get one dataset per year with the following features: quoteID, quotation, speaker, qids, date, numOccurrences, probas, urls, phase, speaker_qid, gender, nationality, date_of_birth, ethnic_group, occupation, party, academic_degree, domains, sentiment. From there we will merge the datasets from each year into one final enriched dataset. From there we will be able to acquire all the required statistics to answer our questions.
 
-Flair (https://github.com/flairNLP/flair) also helps us on several aspects, including tagging. Indeed, it permits us to add tags to tokens from our quotations, such as organizations, locations, persons, events, products, and more. We use pre-trained sequence tagger models like “ner” or “ner-ontonotes”. These tags can be linked with many other results from other parts, such as events and trendings, or products and political parties.
+[Flair](https://github.com/flairNLP/flair) also helps us on several aspects, including tagging. Indeed, it permits us to add tags to tokens from our quotations, such as organizations, locations, persons, events, products, and more. We use pre-trained sequence tagger models like “ner” or “ner-ontonotes”. These tags can be linked with many other results from other parts, such as events and trendings, or products and political parties.
 
 As for our GitHub repository we have the following organization:
-* dictionary_extending.ipynb - This notebook contains code to explore useful keywords for the selection of quotations related to vegetarianism/veganism
-* filter_dataset.ipynb - This notebook selects the quotations related to vegetarianism/veganism from the Quotebank dataset
-* enrich_dataset.ipynb - This notebook contains the code to build the dataset from the Quotebank dataset and the Wikidata knowledge base. There is also the code to merge the datasets from different years
-* analysis.ipynb - This notebook contains some analyses on the final dataset of the year 2020
+* [dictionary_extending.ipynb](notebooks/dictionary_extending.ipynb) - This notebook contains code to explore useful keywords for the selection of quotations related to vegetarianism/veganism performed by looking at most relevant Google search pages on these topics
+* [filter_dataset.ipynb](notebooks/filter_dataset.ipynb) - This notebook selects the quotations related to vegetarianism/veganism from the Quotebank dataset
+* [enrich_dataset.ipynb](notebooks/enrich_dataset.ipynb) - This notebook contains the code to build the dataset from the Quotebank dataset and the Wikidata knowledge base. There is also the code to merge the datasets from different years
+* [analysis.ipynb](notebooks/analysis.ipynb) - This notebook contains basic exploratory analyses as well as deeper look into data on the filtered version of the dataset of the year 2020
 
 The order is the same as our pipeline, that is keyword selection, quotation selection, data augmentation and merging and analysis. This was done mainly for the year 2020 as a proof of feasibility. The extension to other years follows a similar pattern.
+
+The final data story is planned to be presented in a form of a webpage and for this purpose we plan to mainly use bootstrap for design, jquery for functionality and d3 for static and dynamic visualisations out of external tools. Possibly additional tools may be needed and used as well.
 
 ## Organization and timeline
 For the first milestone we are going to work together to obtain a clean dataset containing the selected quotations merged with the speaker attributes and sentiments for all years. From there the work will be divided by research questions. The distribution of the tasks is as follow:
