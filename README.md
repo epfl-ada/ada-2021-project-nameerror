@@ -33,6 +33,8 @@ As for our GitHub repository we have the following organization:
 
 The order is the same as our pipeline, that is keyword selection, quotation selection, data augmentation and merging and analysis. This was done mainly for the year 2020 as a proof of feasibility. The extension to other years follows a similar pattern.
 
+The final data story is planned to be presented in a form of a webpage and for this purpose we plan to mainly use bootstrap for design, jquery for functionality and d3 for static and dynamic visualisations out of external tools. Possibly additional tools may be needed and used as well.
+
 ## Organization and timeline
 For the first milestone we are going to work together to obtain a clean dataset containing the selected quotations merged with the speaker attributes and sentiments for all years. From there the work will be divided by research questions. The distribution of the tasks is as follow:
 * Question 1 - Romain Wiorowski
