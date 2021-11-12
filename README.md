@@ -29,7 +29,7 @@ As for our GitHub repository we have the following organization:
 * [dictionary_extending.ipynb](notebooks/dictionary_extending.ipynb) - This notebook contains code to explore useful keywords for the selection of quotations related to vegetarianism/veganism performed by looking at most relevant Google search pages on these topics
 * [filter_dataset.ipynb](notebooks/filter_dataset.ipynb) - This notebook selects the quotations related to vegetarianism/veganism from the Quotebank dataset
 * [enrich_dataset.ipynb](notebooks/enrich_dataset.ipynb) - This notebook contains the code to build the dataset from the Quotebank dataset and the Wikidata knowledge base. There is also the code to merge the datasets from different years
-* [analysis.ipynb](notebooks/analysis.ipynb) - This notebook contains basic exploratory analyses as well as deeper look into data on the final dataset of the year 2020
+* [analysis.ipynb](notebooks/analysis.ipynb) - This notebook contains basic exploratory analyses as well as deeper look into data on the filtered version of the dataset of the year 2020
 
 The order is the same as our pipeline, that is keyword selection, quotation selection, data augmentation and merging and analysis. This was done mainly for the year 2020 as a proof of feasibility. The extension to other years follows a similar pattern.
 
