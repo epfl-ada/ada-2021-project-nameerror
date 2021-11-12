@@ -36,14 +36,16 @@ The order is the same as our pipeline, that is keyword selection, quotation sele
 ## Organization and timeline
 For the first milestone we are going to work together to obtain a clean dataset containing the selected quotations merged with the speaker attributes and sentiments for all years. From there the work will be divided by research questions. The distribution of the tasks is as follow:
 * Question 1 - Romain Wiorowski
-* Question 2 - Klavdiia Naumova and Alexandre Tkatch
-* Question 3 - Milos Vujasinovic
+* Question 2 - Klavdiia Naumova
+* Question 3 - Alexandre Tkatch
+* Website visualizations - Milos Vujasinovic
 
 The timeline will be organized around the following milestones:
 * Milestone 1 (21.11.2021) - Prepare the final dataset of the selected quotes merged with the speaker attributes and sentiments for the years.
 * Milestone 2 (30.11.2021) - Make all the required visualizations and compute the required statistics.
-* Milestone 3 (10.12.2021) - Putting everything together, selecting the relevant information for the data story. Finishing the first draft.  
-* Milestone 4 (17.12.2021) - Working on the final details, making everything beautiful and readable.
+* Milestone 3 (5.12.2021) - Selecting the relevant information for the data story. Make a first draft
+* Milestone 4 (12.12.2021) - Have visualizations ready on the webpage as well as an outline for the data story
+* Milestone 5 (17.12.2021) - Finishing touches and improvements on the data story and the design of the webpage
 
 ## Questions for TAs
 * We thought about creating some baseline statistics from randomly sampling the Quotebank dataset to make our conclusion more robust. Is this a viable solution?
