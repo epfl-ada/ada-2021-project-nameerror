@@ -12,7 +12,8 @@ def list_to_str (data, col_names):
     for col_name in col_names:
         data[col_name] = data[col_name].str[0]
 
-# sentiment analysis
+# Performs sentiment analysis of the sentence using the analyzer and 
+#    returns a corresponding textual label of the sentiment
 def get_sentiment(analyzer, sentence):
     THRESHOLD = 5e-2
     compound = analyzer.polarity_scores(sentence)['compound']
@@ -23,7 +24,7 @@ def get_sentiment(analyzer, sentence):
     else:
         return 'neutral'
 
-
+# Converts date from the format found on Wikidata to the one used by pandas
 # Source: https://stackoverflow.com/questions/49508986/how-to-convert-incomplete-and-bc-wikidata-dates-to-timestamp
 def get_timestamp(date_str):
     # Probably not necessary
@@ -35,7 +36,7 @@ def get_timestamp(date_str):
     date_str = date_str.split('-00', maxsplit=1)[0]
     return pd.to_datetime(date_str)
 
-# getting domain
+# getting domain of an url
 def get_domain(url):
     r = tldextract.extract(url)
     return f"{r.domain}.{r.suffix}"
