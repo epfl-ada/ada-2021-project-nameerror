@@ -40,3 +40,11 @@ def get_timestamp(date_str):
 def get_domain(url):
     r = tldextract.extract(url)
     return f"{r.domain}.{r.suffix}"
+
+def processMissingValues(df, column_name):
+    df[column_name].replace('None', np.nan, inplace=True)
+
+def preprocess_dataframe(df):
+    df['date'] = pd.to_datetime(df['date'])
+    df.drop_duplicates(subset='quoteID', keep='first', inplace=True)
+    processMissingValues(df, 'speaker')
