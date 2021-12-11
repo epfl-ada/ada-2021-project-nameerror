@@ -12,7 +12,7 @@ def list_to_str (data, col_names):
     for col_name in col_names:
         data[col_name] = data[col_name].str[0]
 
-# Performs sentiment analysis of the sentence using the analyzer and 
+# Performs sentiment analysis of the sentence using the analyzer and
 #    returns a corresponding textual label of the sentiment
 def get_sentiment(analyzer, sentence):
     THRESHOLD = 5e-2
@@ -48,3 +48,11 @@ def preprocess_dataframe(df):
     df['date'] = pd.to_datetime(df['date'])
     df.drop_duplicates(subset='quoteID', keep='first', inplace=True)
     processMissingValues(df, 'speaker')
+
+def plot_sentiment_attribute_percentage(df, attr_name, ax):
+    sentiment_attr_counts = df[['sentiment', attr_name]]\
+        .pivot_table(index='sentiment', columns=attr_name, aggfunc=len)\
+        .replace(np.NaN, 0)
+
+    sentiment_attr_percentages = sentiment_attr_counts / sentiment_attr_counts.sum(axis=0)
+    sentiment_attr_percentages.plot.bar(ax=ax)
