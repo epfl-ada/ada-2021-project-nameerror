@@ -1,20 +1,27 @@
 "Some helpful functions"
 
+import re
+
 import pandas as pd
 import numpy as np
+
+# Visualization
 from matplotlib import pyplot as plt
+
+# NLP
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
-# conversion of list values to string values for convenience
-def list_to_str (data, col_names):
+def list_to_str(data, col_names):
+    """conversion of list values to string values for convenience"""
     for col_name in col_names:
         data[col_name] = data[col_name].str[0]
 
-# Performs sentiment analysis of the sentence using the analyzer and
-#    returns a corresponding textual label of the sentiment
 def get_sentiment(analyzer, sentence):
+    """Performs sentiment analysis of the sentence using the analyzer and
+    returns a corresponding textual label of the sentiment
+    """
     THRESHOLD = 5e-2
     compound = analyzer.polarity_scores(sentence)['compound']
     if compound > THRESHOLD:
@@ -24,30 +31,44 @@ def get_sentiment(analyzer, sentence):
     else:
         return 'neutral'
 
-# Converts date from the format found on Wikidata to the one used by pandas
-# Source: https://stackoverflow.com/questions/49508986/how-to-convert-incomplete-and-bc-wikidata-dates-to-timestamp
-def get_timestamp(date_str):
-    # Probably not necessary
-    date_str = date_str.strip()
-    # Remove + sign
-    if date_str[0] == '+':
-        date_str = date_str[1:]
-    # Remove missing month/day
-    date_str = date_str.split('-00', maxsplit=1)[0]
-    return pd.to_datetime(date_str)
+def timestamp_to_datetime(date_str):
+    """
+    Convert Wikidata timestamp to datetime format.
+    """
+    match = re.findall('\d{4}-\d{2}-\d{2}', date_str)[0]
+    match = re.split('-00', match, 1)[0]
+    return pd.to_datetime(match, errors='coerce')
 
-# getting domain of an url
 def get_domain(url):
+    """getting domain of an url"""
     r = tldextract.extract(url)
     return f"{r.domain}.{r.suffix}"
 
-def processMissingValues(df, column_name):
+def process_missing_values(df, column_name):
     df[column_name].replace('None', np.nan, inplace=True)
+    
+def handle_wikidata_multidates(df, attr_name):
+    """Takes care of entries of the column in wikidata datetime timestamp 
+    and having multiple column values, picks first and converts it to datetime format.
+    The function is specifically designed for birthdates as it was noticed that some
+    entries have values close to each, and slight time differences in these values
+    does not affect the analysis in any meaningful way as it is done on much larger time 
+    interval.
+    """
+    df[attr_name] = df[attr_name].apply(
+        lambda dates: None if dates is None or len(dates) == 0\
+                            else timestamp_to_datetime(dates[0]))
 
-def preprocess_dataframe(df):
+def preprocess_dataframe(df, handle_birth_dates=False):
+    """Converts certain columns to required types for easier handling,
+    drops duplicates and marks missing values to be recognized by pandas.
+    handle_birth_dates argument added for backcompatibility.
+    """
     df['date'] = pd.to_datetime(df['date'])
     df.drop_duplicates(subset='quoteID', keep='first', inplace=True)
-    processMissingValues(df, 'speaker')
+    process_missing_values(df, 'speaker')
+    if handle_birth_dates:
+        handle_wikidata_multidates(df, 'date_of_birth')
 
 def plot_sentiment_attribute_percentage(df, attr_name, ax):
     sentiment_attr_counts = df[['sentiment', attr_name]]\
@@ -78,3 +99,23 @@ def group_by_date_col(df, date_col, freq):
     df_copy = df.copy(deep=False)
     df_copy.index = df_copy[date_col]
     return df_copy.groupby(pd.Grouper(freq=freq))
+
+def get_top_entries(df, attr_name, cutoff_count=-1):
+    """Gets most frequest values of attribute attr_name in the given dataframe as
+    a list sorted by how frequent they are descendingly. Parameter cutoff_count
+    offers flexibility so all values that occur less than cutoff_count times can be 
+    ignored in the return result
+    """
+    top_values = df[attr_name].dropna()\
+            .explode()\
+            .value_counts(sort=True)
+    if cutoff_count > 0:
+        mask = top_values >= cutoff_count
+        top_values = top_values[mask]
+    return list(top_values.index)
+
+def get_multivalue_col_mask(df, attr_name, value):
+    """Returns mask that tells whether respective rows have the specified value
+    in the given multivalue column attr_name for the given dataframe.
+    """
+    return df[attr_name].apply(lambda values: values is not None and value in values)
