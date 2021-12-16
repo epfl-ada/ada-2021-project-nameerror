@@ -5,6 +5,8 @@ import re
 import pandas as pd
 import numpy as np
 
+from scipy.stats import ttest_ind
+
 # Visualization
 from matplotlib import pyplot as plt
 
@@ -128,3 +130,16 @@ def show_mean_with_sem(ax, x, y_mean, y_sem, color, alpha=.2):
     """Plots mean together with its sem in matching colors in the given plot"""
     ax.fill_between(x, y_mean - y_sem, y_mean + y_sem, color=color, alpha=alpha)
     ax.plot(x, y_mean, c=color)
+
+def perform_hypothesis_testing_of_means(distribution_1, distribution_2):
+    """Performs Welch's t-test and Standard independent 2 sample test to test equality
+    of the expected values of the given distributions and prints p-values to stdout
+    """
+    _, standard_pvalue = ttest_ind(distribution_1, distribution_2, equal_var=True)
+    _, welch_pvalue = ttest_ind(distribution_1, distribution_2, equal_var=False)
+
+    # Value of Welch's t-test is used for conclusion as it doesn't rely on any assumptions
+    conclusion = 'unlikely' if welch_pvalue < 5e-2 else 'undecidable'
+    print(f' ----| Standard independent 2 sample test p-value: {standard_pvalue}')
+    print(f' ----| Welch’s t-test p-value: {welch_pvalue}')
+    print(f' ====> Conclusion: The equality of the expected values of the given distributions is [{conclusion.upper()}]')
