@@ -100,11 +100,12 @@ def group_by_date_col(df, date_col, freq):
     df_copy.index = df_copy[date_col]
     return df_copy.groupby(pd.Grouper(freq=freq))
 
-def get_top_entries(df, attr_name, cutoff_count=-1):
+def get_top_entries(df, attr_name, cutoff_count=-1, top_k=-1):
     """Gets most frequest values of attribute attr_name in the given dataframe as
     a list sorted by how frequent they are descendingly. Parameter cutoff_count
     offers flexibility so all values that occur less than cutoff_count times can be 
-    ignored in the return result
+    ignored in the return result. If top_k is > 0 it will ensure that 
+    the result is no longer than top_k elements
     """
     top_values = df[attr_name].dropna()\
             .explode()\
@@ -112,7 +113,10 @@ def get_top_entries(df, attr_name, cutoff_count=-1):
     if cutoff_count > 0:
         mask = top_values >= cutoff_count
         top_values = top_values[mask]
-    return list(top_values.index)
+    result = list(top_values.index)
+    if top_k > 0:
+        result = result[:top_k]
+    return result
 
 def get_multivalue_col_mask(df, attr_name, value):
     """Returns mask that tells whether respective rows have the specified value
