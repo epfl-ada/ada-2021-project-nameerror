@@ -119,3 +119,8 @@ def get_multivalue_col_mask(df, attr_name, value):
     in the given multivalue column attr_name for the given dataframe.
     """
     return df[attr_name].apply(lambda values: values is not None and value in values)
+
+def show_mean_with_sem(ax, x, y_mean, y_sem, color, alpha=.2):
+    """Plots mean together with its sem in matching colors in the given plot"""
+    ax.fill_between(x, y_mean - y_sem, y_mean + y_sem, color=color, alpha=alpha)
+    ax.plot(x, y_mean, c=color)
