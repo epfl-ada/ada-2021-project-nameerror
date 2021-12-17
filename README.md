@@ -42,19 +42,8 @@ The order is the same as our pipeline, that is keyword selection, quotation sele
 
 The final data story is planned to be presented in a form of a webpage and for this purpose we plan to mainly use bootstrap for design, jquery for functionality and d3 for static and dynamic visualisations out of external tools. Possibly additional tools may be needed and used as well.
 
-## (OLD) Organization and timeline
-For the first milestone we are going to work together to obtain a clean dataset containing the selected quotations merged with the speaker attributes and sentiments for all years. From there the work will be divided by research questions. The distribution of the tasks is as follow:
-* Question 1 - Romain Wiorowski
-* Question 2 - Klavdiia Naumova
-* Question 3 - Alexandre Tkatch
-* Website visualizations - Milos Vujasinovic
-
-The timeline will be organized around the following milestones:
-* Milestone 1 (21.11.2021) - Prepare the final dataset of the selected quotes merged with the speaker attributes and sentiments for the years.
-* Milestone 2 (30.11.2021) - Make all the required visualizations and compute the required statistics.
-* Milestone 3 (5.12.2021) - Selecting the relevant information for the data story. Make a first draft
-* Milestone 4 (12.12.2021) - Have visualizations ready on the webpage as well as an outline for the data story
-* Milestone 5 (17.12.2021) - Finishing touches and improvements on the data story and the design of the webpage
-
-## (OLD) Questions for TAs
-* We thought about creating some baseline statistics from randomly sampling the Quotebank dataset to make our conclusion more robust. Is this a viable solution?
+## Organization and contributions
+* Milos Vujasinovic: data wrangling, website design, topic modeling 
+* Romain Wiorowski: data wrangling, topic modeling, writing 
+* Klavdiia Naumova: data wrangling, attribute analysis, writing
+* Alexandre Tkatch: data wrangling, attribute analysis, writing 
