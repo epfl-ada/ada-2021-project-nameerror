@@ -31,13 +31,18 @@ As for our GitHub repository we have the following organization:
 * [dictionary_extending.ipynb](notebooks/dictionary_extending.ipynb) - This notebook contains code to explore useful keywords for the selection of quotations related to vegetarianism/veganism performed by looking at most relevant Google search pages on these topics
 * [filter_dataset.ipynb](notebooks/filter_dataset.ipynb) - This notebook selects the quotations related to vegetarianism/veganism from the Quotebank dataset
 * [enrich_dataset.ipynb](notebooks/enrich_dataset.ipynb) - This notebook contains the code to build the dataset from the Quotebank dataset and the Wikidata knowledge base. There is also the code to merge the datasets from different years
-* [analysis.ipynb](notebooks/analysis.ipynb) - This notebook contains basic exploratory analyses as well as deeper look into data on the filtered version of the dataset of the year 2020
+* [analysis.ipynb](notebooks/analysis.ipynb) - Preliminary analysis notebook contains basic exploratory analyses as well as deeper look into data on the filtered version of the dataset of the year 2020
+* [Evolution_number_quotations.ipynb](notebooks/Evolution_number_quotations.ipynb) - A simple notebook that contains only a plot with number of quotes per each year
+* [Question2_analysis.ipynb](notebooks/Question2_analysis.ipynb), [Sentiment_analysis_plots.ipynb](notebooks/Sentiment_analysis_plots.ipynb) - These notebook look into correlation between traits of a speaker and the sentiment of their quotes in discrete way
+* [date_of_birth_analysis.ipynb](notebooks/date_of_birth_analysis.ipynb) - This notebook looks into correlation between date of birth of the speaker and sentiment of their quotes
+* [Sentiment_over_time.ipynb](notebooks/Sentiment_over_time.ipynb) - This notebook takes a deeper look into sentiments from continous standpoint.  It further tests hypotheses of differences between the sentiments of quotes of different groups of people and performs regression analysis to see how different traits in fact affect the sentiment. Finally, it models topic evolution over time using `empath` package
+* [Related_topics.ipynb](notebooks/Related_topics.ipynb) - This notebook looks into evolution of different topics in the quotes over time modelling them using Latent Dirichlet Allocation
 
 The order is the same as our pipeline, that is keyword selection, quotation selection, data augmentation and merging and analysis. This was done mainly for the year 2020 as a proof of feasibility. The extension to other years follows a similar pattern.
 
 The final data story is planned to be presented in a form of a webpage and for this purpose we plan to mainly use bootstrap for design, jquery for functionality and d3 for static and dynamic visualisations out of external tools. Possibly additional tools may be needed and used as well.
 
-## Organization and timeline
+## (OLD) Organization and timeline
 For the first milestone we are going to work together to obtain a clean dataset containing the selected quotations merged with the speaker attributes and sentiments for all years. From there the work will be divided by research questions. The distribution of the tasks is as follow:
 * Question 1 - Romain Wiorowski
 * Question 2 - Klavdiia Naumova
@@ -50,3 +55,6 @@ The timeline will be organized around the following milestones:
 * Milestone 3 (5.12.2021) - Selecting the relevant information for the data story. Make a first draft
 * Milestone 4 (12.12.2021) - Have visualizations ready on the webpage as well as an outline for the data story
 * Milestone 5 (17.12.2021) - Finishing touches and improvements on the data story and the design of the webpage
+
+## (OLD) Questions for TAs
+* We thought about creating some baseline statistics from randomly sampling the Quotebank dataset to make our conclusion more robust. Is this a viable solution?
