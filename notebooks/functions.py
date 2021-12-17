@@ -1,5 +1,6 @@
 "Some helpful functions"
 
+import json
 import re
 
 import pandas as pd
@@ -166,3 +167,8 @@ def multi_hot(df, attr_name, cutoff):
         get_multivalue_col_mask(df, attr_name, value).astype(int).rename(f'{attr_name}_{value}')\
         for value in values
     ], axis=1)
+
+def export_as_json(python_obj, out_file):
+    """Exports the given Python object as JSON file in the specified path"""
+    with open(out_file, 'w') as f:
+        json.dump(python_obj, f)
