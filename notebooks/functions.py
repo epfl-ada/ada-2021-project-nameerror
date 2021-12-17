@@ -143,3 +143,26 @@ def perform_hypothesis_testing_of_means(distribution_1, distribution_2):
     print(f' ----| Standard independent 2 sample test p-value: {standard_pvalue}')
     print(f' ----| Welch’s t-test p-value: {welch_pvalue}')
     print(f' ====> Conclusion: The equality of the expected values of the given distributions is [{conclusion.upper()}]')
+    
+def normalize(series):
+    """Returns normalized version of the series"""
+    smax = series.max()
+    smin = series.min()
+    return (series - smin) / (smax - smin)
+
+def standardize(series):
+    """Returns standardized version of the series"""
+    return (series - series.mean()) / series.std()
+
+def multi_hot(df, attr_name, cutoff):
+    """Multihot encoding of the given attribute of the dataframe while 
+    keeping only values appearing at least cutoff time. If no values made through
+    cutoff the result is None
+    """
+    values = get_top_entries(df, attr_name, cutoff_count=cutoff)
+    if len(values) == 0:
+        return None
+    return pd.concat([
+        get_multivalue_col_mask(df, attr_name, value).astype(int).rename(f'{attr_name}_{value}')\
+        for value in values
+    ], axis=1)
